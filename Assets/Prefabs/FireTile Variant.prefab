@@ -13,7 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e570023e09e170c4d8509f5318f5831e, type: 2}
     - target: {fileID: 3092230420965842706, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_Name
-      value: FireTile
+      value: FireTile Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092230420965842706, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
+      propertyPath: m_TagString
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 6654249625129687152, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_RootOrder

@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject selectionBoxSample;
     public GameObject[] tiles;
     public float spawnHeight { get;} = 9.5f;
+    public bool isMoving { get; set; } = false;
     public bool isSelectionActive { get; set; } = false;
-    public int selectedTiles { get; set; } = 0;
+    public List<GameObject> selectedTiles { get; set; }  = new List<GameObject>();
     public GameObject[,] collumns { get; private set; } = new GameObject[8, 8];
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnCollumn(1, 0));
-        StartCoroutine(SpawnCollumn(2, 1));
-        StartCoroutine(SpawnCollumn(2, 2));
-        StartCoroutine(SpawnCollumn(3, 3));
-        StartCoroutine(SpawnCollumn(3, 4));
-        StartCoroutine(SpawnCollumn(2, 5));
-        StartCoroutine(SpawnCollumn(2, 6));
-        StartCoroutine(SpawnCollumn(1, 7));
+        int[] initialCollumns = {1, 2, 2, 3, 3, 2, 2, 1 };
+        for (int i = 0; i < 8; i++)
+            StartCoroutine(SpawnCollumn(initialCollumns[i], i));
     }
 
     // Update is called once per frame
@@ -39,10 +36,24 @@ public class GameManager : MonoBehaviour
                 break;
             }
         GameObject tile = tiles[Random.Range(0, tiles.Length)];
-        GameObject spawnedTile = tile;
-        spawnedTile.GetComponent<Tile>().SetRow(row);
+        GameObject spawnedTile = Instantiate<GameObject>(tile, spawnPoint, tile.transform.rotation);
+        spawnedTile.GetComponent<Tile>().SetPositionData(collumn, row);
         collumns[collumn, row] = spawnedTile;
-        Instantiate<GameObject>(spawnedTile, spawnPoint, tile.transform.rotation);
+        //Instantiate<GameObject>(spawnedTile, spawnPoint, tile.transform.rotation);
+    }
+
+    public void UndoSelection()
+    {
+        isSelectionActive = false;
+        isMoving = false;
+        Destroy(GetSelectionBox());
+        selectedTiles = new List<GameObject>();
+    }
+
+    public GameObject GetSelectionBox()
+    {
+        GameObject selectionBox = GameObject.Find("SelectionBox(Clone)");
+        return selectionBox;
     }
 
     IEnumerator SpawnCollumn(int amount, int collumn)

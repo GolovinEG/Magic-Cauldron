@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6706700950852918063, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
+      propertyPath: row
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6706700950852918063, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
+      propertyPath: collumn
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1890990244783738036, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -14,6 +22,10 @@ PrefabInstance:
     - target: {fileID: 3092230420965842706, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_Name
       value: AirTile Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092230420965842706, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
+      propertyPath: m_TagString
+      value: Air
       objectReference: {fileID: 0}
     - target: {fileID: 6654249625129687152, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_RootOrder

@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterTile Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3092230420965842706, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
     - target: {fileID: 6654249625129687152, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_RootOrder
       value: 0
