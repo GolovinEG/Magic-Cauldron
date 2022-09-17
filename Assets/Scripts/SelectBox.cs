@@ -5,6 +5,7 @@ using UnityEngine;
 public class SelectBox : MonoBehaviour
 {
     public float moveSnapDistance;
+    public GameObject phantomTileSample;
     public Material[] phantomMaterials;
 
     private int row, rightShift;
@@ -33,8 +34,8 @@ public class SelectBox : MonoBehaviour
             }
             else if (Mathf.Abs(Input.mousePosition.x - initialPosition) > moveSnapDistance)
             {
-                if (Input.mousePosition.x > initialPosition) MoveSelection(true);
-                else MoveSelection(false);
+                if (Input.mousePosition.x > initialPosition) PreviewMovement(true);
+                else PreviewMovement(false);
                 initialPosition = Input.mousePosition.x;
             }
         }
@@ -48,10 +49,9 @@ public class SelectBox : MonoBehaviour
         initialPosition = Input.mousePosition.x;
         foreach (GameObject tile in game.selectedTiles)
         {
-            phantomTile = Instantiate<GameObject>(tile).GetComponent<Tile>().GetPhantomTile();
-            phantomTile.GetComponent<MeshRenderer>().material = GetElement(tile);
+            phantomTile = Instantiate<GameObject>(phantomTileSample, tile.transform.position, tile.transform.rotation);
+            phantomTile.GetComponent<MeshRenderer>().material = tile.GetComponent<CommonTile>().pahntomMaterial;
             phantomTiles.Add(phantomTile);
-            //Instantiate<GameObject>(phantomTile);
         }
         rightShift = 0;
         selectBorders = GetSelectBorders();
@@ -76,7 +76,7 @@ public class SelectBox : MonoBehaviour
         }
     }
 
-    private void MoveSelection(bool isMovingRight)
+    private void PreviewMovement(bool isMovingRight)
     {
         int[] shiftedSelectBorders = {selectBorders[0] + rightShift, selectBorders[1] + rightShift};
         if (isMovingRight && (shiftedSelectBorders[1] < movementBorders[1]))
@@ -124,45 +124,52 @@ public class SelectBox : MonoBehaviour
         if (rightShift != 0)
         {
             List<int[]> shiftedTiles = new List<int[]>();
-            foreach(GameObject tile in game.selectedTiles)
+            GameObject[,] newCollumns = new GameObject[8,8];
+            CopyCollumns(game.collumns, newCollumns);
+            foreach (GameObject tile in game.selectedTiles)
+                newCollumns[tile.GetComponent<CommonTile>().collumn, tile.GetComponent<CommonTile>().row] = null;
+            foreach (GameObject tile in game.selectedTiles)
             {
                 int[] shiftedTile = new int[2];
-                Tile tileMover = tile.GetComponent<Tile>();
-                game.collumns[tileMover.GetCollumn() + rightShift, tileMover.GetRow()] = game.collumns[tileMover.GetCollumn(), tileMover.GetRow()];
-                game.collumns[tileMover.GetCollumn(), tileMover.GetRow()] = null;
-                shiftedTile[0] = tileMover.GetCollumn();
-                shiftedTile[1] = tileMover.GetRow();
+                CommonTile tileMover = tile.GetComponent<CommonTile>();
+                newCollumns[tileMover.collumn + rightShift, tileMover.row] = game.collumns[tileMover.collumn, tileMover.row];
+                shiftedTile[0] = tileMover.collumn;
+                shiftedTile[1] = tileMover.row;
                 shiftedTiles.Add(shiftedTile);
                 tileMover.MoveCollumn(rightShift);
-                while (game.collumns[tileMover.GetCollumn(), tileMover.GetRow() - 1] == null)
+                while ((game.collumns[tileMover.collumn, Mathf.Max(tileMover.row - 1, 0)] == null)&&(tileMover.row - 1 >= 0))
                 {
-                    game.collumns[tileMover.GetCollumn(), tileMover.GetRow() - 1] = game.collumns[tileMover.GetCollumn(), tileMover.GetRow()];
-                    game.collumns[tileMover.GetCollumn(), tileMover.GetRow()] = null;
-                    tileMover.LowerRow();
+                    newCollumns[tileMover.collumn, tileMover.row - 1] = newCollumns[tileMover.collumn, tileMover.row];
+                    newCollumns[tileMover.collumn, tileMover.row] = null;
+                    tileMover.row--;
                 }
                 tileMover.Fall();
             }
-            foreach (GameObject tile in phantomTiles) Destroy(tile);
+            CopyCollumns(newCollumns, game.collumns);
             foreach (int[] position in shiftedTiles) if (game.collumns[position[0], position[1]] == null) CheckFallingTiles(position);//check falling tiles
+            game.HandleTurn();
         }
+        foreach (GameObject tile in phantomTiles) Destroy(tile);
     }
 
     private void CheckFallingTiles(int[] position)
     {
-        if (game.collumns[position[0], position[1] + 1] != null)
-        {
-            game.collumns[position[0], position[1]] = game.collumns[position[0], position[1] + 1];
-            game.collumns[position[0], position[1] + 1] = null;
-            game.collumns[position[0], position[1]].GetComponent<Tile>().LowerRow();
-            game.collumns[position[0], position[1]].GetComponent<Tile>().Fall();
-            int[] newPosition = { position[0], position[1] + 1 };
-            CheckFallingTiles(newPosition);
-        }
+        if (position[1] != 7)
+            if (game.collumns[position[0], position[1] + 1] != null)
+            {
+                game.collumns[position[0], position[1]] = game.collumns[position[0], position[1] + 1];
+                game.collumns[position[0], position[1] + 1] = null;
+                game.collumns[position[0], position[1]].GetComponent<CommonTile>().row--;
+                game.collumns[position[0], position[1]].GetComponent<CommonTile>().Fall();
+                int[] newPosition = { position[0], position[1] + 1 };
+                CheckFallingTiles(newPosition);
+            }
     }
 
-    IEnumerator DelayDebug()
+    private void CopyCollumns(GameObject[,] inCollumns, GameObject[,] outCollumns)
     {
-        yield return new WaitForSeconds(1);
-        Debug.Log("DebugOn");
+        for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
+                outCollumns[i, j] = inCollumns[i, j];
     }
 }

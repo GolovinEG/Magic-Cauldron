@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2654229848429021115}
   - component: {fileID: 1890990244783738036}
   - component: {fileID: 6877959653164747671}
-  - component: {fileID: -6706700950852918063}
+  - component: {fileID: 8766988828822756263}
   m_Layer: 0
   m_Name: BaseTile
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6706700950852918063
+--- !u!114 &8766988828822756263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,8 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3092230420965842706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7245fdcc5f34adc4a997aad5cae64117, type: 3}
+  m_Script: {fileID: 11500000, guid: 53cd1e1d2134d76439b30580de558f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fallFrames: 12
-  selectionBoxSample: {fileID: 1423358675243578143, guid: e2390c13e13f4274680583fe99f5d7c7, type: 3}

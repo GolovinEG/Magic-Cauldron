@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSnapDistance: 40
+  phantomTileSample: {fileID: 7487558459687358242, guid: ad44211350388d84d9d17e5149edf8e4, type: 3}
   phantomMaterials:
   - {fileID: 2100000, guid: 640c5fab122fe204fbfdcc0da7b9bbae, type: 2}
   - {fileID: 2100000, guid: 1e7087baf6655014aa1442626020dce3, type: 2}

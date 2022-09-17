@@ -8,6 +8,8 @@ TagManager:
   - Earth
   - Fire
   - Water
+  - Rare
+  - Cursed
   layers:
   - Default
   - TransparentFX
