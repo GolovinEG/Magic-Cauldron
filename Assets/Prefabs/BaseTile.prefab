@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd1e1d2134d76439b30580de558f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallFrames: 12
+  pahntomMaterial: {fileID: 0}

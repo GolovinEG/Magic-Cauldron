@@ -63,7 +63,14 @@ public class CommonTile : MonoBehaviour
                     game.detonatingTiles.Add(rareTile);
                 foreach (GameObject tile in game.detonatingTiles)
                     if (tile.tag == "Rare")
+                    {
+                        int tileRow = tile.GetComponent<CommonTile>().row;
+                        int tileCollumn = tile.GetComponent<CommonTile>().collumn;
                         tile.GetComponent<CommonTile>().Detonate();
+                        if (tileRow != 7)
+                            if (game.collumns[tileCollumn, tileRow + 1] != null)
+                                game.collumns[tileCollumn, tileRow + 1].GetComponent<CommonTile>().FallAfterEvent();
+                    }
                 foreach (GameObject tile in game.detonatingTiles)
                     if (tile.tag != "Rare")
                     {
@@ -130,10 +137,8 @@ public class CommonTile : MonoBehaviour
                         game.waterButton.GetComponentInChildren<TMPro.TMP_Text>().text = "Water " + game.waterMana + "/100";
                         break;
                 }
-                game.fallingTiles = new List<GameObject>();
-                game.blastedTiles = new List<GameObject>();
             }
-            game.detonatingTiles = new List<GameObject>();
+            game.CleanUp();
         }
     }
 

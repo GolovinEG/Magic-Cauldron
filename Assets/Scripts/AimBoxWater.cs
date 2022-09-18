@@ -26,7 +26,7 @@ public class AimBoxWater : AimBox
             game.waterButton.interactable = false;
             game.waterButton.GetComponentInChildren<TMPro.TMP_Text>().text = "Water: 0/100";
         }
-        game.blastedTiles = new List<GameObject>();
+        game.CleanUp();
     }
 
     private void Flood(int collumn, int row, int goingRight)

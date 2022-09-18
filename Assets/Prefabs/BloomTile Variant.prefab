@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2999035840784990963
+--- !u!1001 &7583177919421034123
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,14 +10,14 @@ PrefabInstance:
     - target: {fileID: 1890990244783738036, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7f55811b8851716478e9e5eb76edb84c, type: 2}
+      objectReference: {fileID: 2100000, guid: 40a67b23a4a31c540b43eff7f6a5c5b9, type: 2}
     - target: {fileID: 3092230420965842706, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_Name
-      value: WaterTile Variant
+      value: BloomTile Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3092230420965842706, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_TagString
-      value: Water
+      value: Rare
       objectReference: {fileID: 0}
     - target: {fileID: 6654249625129687152, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_RootOrder
@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6654249625129687152, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654249625129687152, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5000004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654249625129687152, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63,9 +63,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8766988828822756263, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
-      propertyPath: pahntomMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 98c3e6413d93a9a43aaf10ef6a625e32, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8766988828822756263, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
+--- !u!1 &4887833916448076185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3092230420965842706, guid: e55f639eac1e4c248a8bcba19be694b9, type: 3}
+  m_PrefabInstance: {fileID: 7583177919421034123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6233624664768264791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887833916448076185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c571e033b611861448159d25a05dd006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pahntomMaterial: {fileID: 2100000, guid: a596969ed6b93454b9cb3756afbfe35e, type: 2}

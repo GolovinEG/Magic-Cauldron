@@ -34,7 +34,6 @@ public class AimBoxFire : AimBox
             tile.GetComponent<CommonTile>().Detonate();
         foreach (GameObject tile in game.fallingTiles)
             tile.GetComponent<CommonTile>().Fall();
-        game.detonatingTiles = new List<GameObject>();
-        game.fallingTiles = new List<GameObject>();
+        game.CleanUp();
     }
 }

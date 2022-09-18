@@ -61,7 +61,6 @@ public class AimBoxAir : AimBox
         }
         foreach (GameObject tile in game.blastedTiles)
             Destroy(tile);
-        game.blastedTiles = new List<GameObject>();
-        game.fallingTiles = new List<GameObject>();
+        game.CleanUp();
     }
 }

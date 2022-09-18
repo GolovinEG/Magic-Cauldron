@@ -29,7 +29,7 @@ public class AimBoxEarth : AimBox
             game.earthButton.interactable = false;
             game.earthButton.GetComponentInChildren<TMPro.TMP_Text>().text = "Earth: 0/100";
         }
-        game.blastedTiles = new List<GameObject>();
+        game.CleanUp();
     }
 
     private void ShiftUp(GameObject tile)
