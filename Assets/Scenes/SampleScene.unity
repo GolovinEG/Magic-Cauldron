@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 103630055}
   - component: {fileID: 103630054}
   - component: {fileID: 103630053}
+  - component: {fileID: 103630056}
   m_Layer: 5
   m_Name: FireSpell
   m_TagString: Untagged
@@ -206,7 +207,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 103630054}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 103630056}
+        m_TargetAssemblyTypeName: Spell, Assembly-CSharp
+        m_MethodName: CastSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &103630054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +258,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103630051}
   m_CullTransparentMesh: 1
+--- !u!114 &103630056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103630051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f9075a1ef3c0f4697fe1b545c59626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimBoxSample: {fileID: 9177115572199520110, guid: 5c28e45ac236a9c4aa123355bc35da2a, type: 3}
 --- !u!1 &130577680
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +418,7 @@ GameObject:
   - component: {fileID: 208524042}
   - component: {fileID: 208524041}
   - component: {fileID: 208524040}
+  - component: {fileID: 208524043}
   m_Layer: 5
   m_Name: EarthSpell
   m_TagString: Untagged
@@ -463,7 +490,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 208524041}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 208524043}
+        m_TargetAssemblyTypeName: Spell, Assembly-CSharp
+        m_MethodName: CastSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &208524041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +541,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208524038}
   m_CullTransparentMesh: 1
+--- !u!114 &208524043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208524038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f9075a1ef3c0f4697fe1b545c59626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimBoxSample: {fileID: 6607139877865826148, guid: b79bbdf6f8a631d45a3f32f98565d465, type: 3}
 --- !u!1 &317150236
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +626,7 @@ GameObject:
   - component: {fileID: 459793763}
   - component: {fileID: 459793762}
   - component: {fileID: 459793761}
+  - component: {fileID: 459793764}
   m_Layer: 5
   m_Name: WaterSpell
   m_TagString: Untagged
@@ -645,7 +698,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459793762}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 459793764}
+        m_TargetAssemblyTypeName: Spell, Assembly-CSharp
+        m_MethodName: CastSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &459793762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +749,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459793759}
   m_CullTransparentMesh: 1
+--- !u!114 &459793764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459793759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f9075a1ef3c0f4697fe1b545c59626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimBoxSample: {fileID: 903271720260156178, guid: 9ee39b0037826654f8779864134ca05c, type: 3}
 --- !u!1 &502958943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1725,7 @@ GameObject:
   - component: {fileID: 1594123393}
   - component: {fileID: 1594123392}
   - component: {fileID: 1594123391}
+  - component: {fileID: 1594123394}
   m_Layer: 5
   m_Name: AirSpell
   m_TagString: Untagged
@@ -1718,7 +1797,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1594123392}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1594123394}
+        m_TargetAssemblyTypeName: Spell, Assembly-CSharp
+        m_MethodName: CastSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1594123392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1757,6 +1848,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594123389}
   m_CullTransparentMesh: 1
+--- !u!114 &1594123394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594123389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f9075a1ef3c0f4697fe1b545c59626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimBoxSample: {fileID: 8173329009579408973, guid: 013a6da1f18f63c4a94c389cee238b2c, type: 3}
 --- !u!1 &1706521845
 GameObject:
   m_ObjectHideFlags: 0

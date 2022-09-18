@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public bool isMoving { get; set; } = false;
     public bool isSelectionActive { get; set; } = false;
     public bool isInteractible { get; set; } = false;
+    public GameObject activeAimBox { get; set; }
     private int spawnCount = 2;
     public int score { get; set; } = 0;
     public int airMana { get; set; } = 0;
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
         isInteractible = true;
     }
 
-    void SpawnTile(int collumn)
+    private void SpawnTile(int collumn)
     {
         Vector3 spawnPoint = new Vector3();
         int row = 0;

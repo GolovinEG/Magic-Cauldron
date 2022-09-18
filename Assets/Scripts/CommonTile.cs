@@ -37,6 +37,15 @@ public class CommonTile : MonoBehaviour
             game.selectedTiles.Add(gameObject);
             game.GetSelectionBox().transform.localScale = new Vector3(0.1f + game.selectedTiles.Count, 1.1f, 1.1f);
         }
+        else if (game.activeAimBox != null)
+        {
+            game.activeAimBox.GetComponent<MeshRenderer>().enabled = true;
+            if ((collumn == 7) && (game.activeAimBox.GetComponent<AimBox>().xShift == 0.5f))
+                game.activeAimBox.GetComponent<AimBox>().xShift = -0.5f;
+            else if ((collumn == 0) && (game.activeAimBox.GetComponent<AimBox>().xShift == -0.5f))
+                game.activeAimBox.GetComponent<AimBox>().xShift = 0.5f;
+            game.activeAimBox.transform.position = gameObject.transform.position + Vector3.up * game.activeAimBox.GetComponent<AimBox>().yShift + Vector3.right * game.activeAimBox.GetComponent<AimBox>().xShift;
+        }
     }
 
     protected virtual void OnMouseOver()
@@ -210,7 +219,7 @@ public class CommonTile : MonoBehaviour
         }
     }
 
-    protected void FallAfterEvent()
+    public void FallAfterEvent()
     {
         if ((row != 0) && (!game.detonatingTiles.Contains(gameObject)) && (!game.blastedTiles.Contains(gameObject)))
         {
