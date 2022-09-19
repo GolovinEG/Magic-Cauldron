@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class GameManager : MonoBehaviour
 {
     public int rareChance;
-    public GameObject selectionBoxSample;
+    public GameObject selectionBoxSample, gameOver;
     public GameObject[] commonTiles, rareTiles;
-    public TMPro.TMP_Text scoreText, gameOverText, hiScoreText;
+    public TMPro.TMP_Text scoreText, hiScoreText, nameText;
     public Button airButton, earthButton, fireButton, waterButton;
     public int fallFrames { get; set; } = 12;
     public float spawnHeight { get;} = 9.5f;
@@ -39,10 +43,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nameText.text = "Name: " + NameData.Instance.GetName();
         int[] initialCollumns = {1, 2, 2, 3, 3, 2, 2, 1 };
         for (int i = 0; i < 8; i++)
             StartCoroutine(SpawnCollumn(initialCollumns[i], i));
         isInteractible = true;
+        //if (NameData.Instance.name != null) ;
         if (File.Exists(Application.persistentDataPath + "/Hiscore.json"))
         {
             hiScore = JsonUtility.FromJson<Record>(File.ReadAllText(Application.persistentDataPath + "/Hiscore.json")).hiScore;
@@ -106,7 +112,7 @@ public class GameManager : MonoBehaviour
                 if (collumns[randomCollumn, 7] != null)
                 {
                     isGameOver = true;
-                    gameOverText.enabled = true;
+                    gameOver.SetActive(true);
                     if (score > hiScore)
                     {
                         hiScore = score;
@@ -140,5 +146,19 @@ public class GameManager : MonoBehaviour
         detonatingTiles = new List<GameObject>();
         blastedTiles = new List<GameObject>();
         fallingTiles = new List<GameObject>();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit(0);
+#endif
     }
 }
